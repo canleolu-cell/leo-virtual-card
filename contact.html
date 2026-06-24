@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>保存 LEO LU 联系人</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #667085;
+      --line: #d9e1ea;
+      --paper: #f7f9fb;
+      --blue: #165dff;
+      --orange: #f97316;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(135deg, #eef3f8 0%, #ffffff 52%, #f4f6f8 100%);
+    }
+
+    main {
+      width: min(720px, 100%);
+      margin: 0 auto;
+      padding: 28px 16px 36px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--white);
+      box-shadow: 0 22px 70px rgba(23, 32, 42, 0.12);
+      overflow: hidden;
+    }
+
+    .head {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      padding: 24px;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(22, 93, 255, 0.15), transparent 24%),
+        radial-gradient(circle at 96% 14%, rgba(249, 115, 22, 0.12), transparent 26%),
+        var(--white);
+    }
+
+    .photo {
+      width: 88px;
+      height: 88px;
+      border: 3px solid var(--white);
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 12px 28px rgba(23, 32, 42, 0.2);
+      flex: 0 0 auto;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 32px;
+      line-height: 1.1;
+    }
+
+    .subtitle {
+      margin-top: 8px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .section {
+      border-top: 1px solid var(--line);
+      padding: 22px 24px;
+    }
+
+    .notice {
+      display: none;
+      padding: 14px;
+      border: 1px solid rgba(249, 115, 22, 0.35);
+      border-radius: 14px;
+      background: #fff7ed;
+      color: #9a3412;
+      line-height: 1.7;
+      font-weight: 700;
+    }
+
+    .notice.show {
+      display: block;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .button {
+      display: flex;
+      min-height: 50px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: var(--ink);
+      background: var(--white);
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .button.primary {
+      border-color: var(--blue);
+      color: var(--white);
+      background: var(--blue);
+    }
+
+    .button.orange {
+      border-color: var(--orange);
+      color: var(--white);
+      background: var(--orange);
+    }
+
+    .info {
+      display: grid;
+      gap: 8px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--paper);
+      line-height: 1.65;
+      overflow-wrap: anywhere;
+    }
+
+    .status {
+      min-height: 22px;
+      margin-top: 10px;
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    @media (min-width: 640px) {
+      .actions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .button.primary {
+        grid-column: 1 / -1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <article class="card">
+      <section class="head">
+        <img class="photo" src="assets/leo-photo.jpg" alt="LEO LU 卢剑辉">
+        <div>
+          <h1>LEO LU<br>卢剑辉</h1>
+          <div class="subtitle">物流部部长<br>Logistics Department Manager</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div id="wechat-notice" class="notice">
+          微信内置浏览器可能无法直接保存通讯录。请点击右上角「...」，选择「在浏览器打开」，再点下方保存按钮。
+        </div>
+        <div class="actions">
+          <a class="button primary" href="leo-lu.vcf" download>下载联系人文件 / Download Contact</a>
+          <button class="button orange" type="button" id="copy-contact">复制完整资料 / Copy Details</button>
+          <a class="button" href="tel:+8613829757750">拨打电话 / Call</a>
+          <a class="button" href="https://wa.me/8613829757750">WhatsApp</a>
+          <a class="button" href="mailto:lujh@shjayson.com">发送邮件 / Email</a>
+          <a class="button" href="index.html">返回名片 / Back</a>
+        </div>
+        <div class="status" id="status" aria-live="polite"></div>
+      </section>
+
+      <section class="section">
+        <div class="info" id="contact-text">
+LEO LU / 卢剑辉
+物流部部长 / Logistics Department Manager
+深圳律动未来循环材料有限公司
+Shenzhen Ecorecycling Technology Co., Ltd.
+电话: 18825044791 / 13802975750
+微信: 13802975750
+WhatsApp: +86 13802975750
+邮箱: lujh@shjayson.com
+网站: www.shjayson.com
+地址: 深圳福田区喜年中心A座712室
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <script>
+    const isWeChat = /MicroMessenger/i.test(navigator.userAgent);
+    const notice = document.getElementById("wechat-notice");
+    const statusEl = document.getElementById("status");
+    const contactText = document.getElementById("contact-text").innerText.trim();
+
+    if (isWeChat) {
+      notice.classList.add("show");
+    }
+
+    document.getElementById("copy-contact").addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(contactText);
+        statusEl.textContent = "联系人资料已复制 / Contact details copied";
+      } catch (error) {
+        statusEl.textContent = "请长按下方文字手动复制 / Long press the text below to copy";
+      }
+    });
+  </script>
+</body>
+</html>
