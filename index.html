@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LEO LU | 卢剑辉</title>
+  <meta name="description" content="LEO LU / 卢剑辉 - Shenzhen Ecorecycling Technology Co., Ltd.">
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #667085;
+      --line: #d9e1ea;
+      --paper: #f7f9fb;
+      --blue: #165dff;
+      --orange: #f97316;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(135deg, #eef3f8 0%, #ffffff 48%, #f4f6f8 100%);
+    }
+
+    main {
+      width: min(920px, 100%);
+      margin: 0 auto;
+      padding: 28px 16px 36px;
+    }
+
+    .shell {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 22px 70px rgba(23, 32, 42, 0.12);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+      padding: 26px;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(22, 93, 255, 0.16), transparent 24%),
+        radial-gradient(circle at 96% 14%, rgba(249, 115, 22, 0.13), transparent 26%),
+        var(--white);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand img {
+      width: 230px;
+      max-width: 72vw;
+      height: auto;
+      display: block;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .photo {
+      width: 104px;
+      height: 104px;
+      border: 3px solid var(--white);
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 12px 32px rgba(23, 32, 42, 0.22);
+      flex: 0 0 auto;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(32px, 7vw, 54px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .cn-name {
+      margin-top: 8px;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .role {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .company {
+      margin: 0;
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    .tagline {
+      margin-top: 16px;
+      padding-left: 12px;
+      border-left: 4px solid var(--orange);
+      color: #2f3a46;
+      line-height: 1.7;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      padding: 0 26px 26px;
+    }
+
+    .button {
+      display: flex;
+      min-height: 50px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: var(--ink);
+      background: var(--white);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .button.primary {
+      grid-column: 1 / -1;
+      border-color: var(--blue);
+      color: var(--white);
+      background: var(--blue);
+    }
+
+    .button.orange {
+      border-color: var(--orange);
+      color: var(--white);
+      background: var(--orange);
+    }
+
+    .section {
+      border-top: 1px solid var(--line);
+      padding: 22px 26px;
+      background: var(--white);
+    }
+
+    .showcase {
+      display: grid;
+      gap: 16px;
+      border-top: 1px solid var(--line);
+      padding: 24px 26px;
+      background: var(--white);
+    }
+
+    .showcase img {
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      border-radius: 16px;
+      object-fit: cover;
+      display: block;
+      box-shadow: 0 14px 36px rgba(23, 32, 42, 0.12);
+    }
+
+    .showcase-copy {
+      color: #2f3a46;
+      line-height: 1.7;
+    }
+
+    .showcase-copy strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--ink);
+      font-size: 18px;
+    }
+
+    .section h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .info {
+      display: grid;
+      gap: 6px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--paper);
+    }
+
+    .label {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .value {
+      overflow-wrap: anywhere;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .keywords {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .keyword {
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .wechat {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .wechat img {
+      width: 120px;
+      height: 120px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      object-fit: cover;
+      background: var(--white);
+    }
+
+    .foot {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    @media (min-width: 720px) {
+      main {
+        padding-top: 44px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr 1.1fr;
+        align-items: center;
+        padding: 34px;
+      }
+
+      .actions {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        padding: 0 34px 34px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .section {
+        padding: 26px 34px;
+      }
+
+      .showcase {
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+        padding: 30px 34px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <article class="shell">
+      <section class="hero">
+        <div>
+          <div class="brand">
+            <img src="assets/logo.png" alt="JAYSON 锦源晟">
+          </div>
+          <div class="profile">
+            <img class="photo" src="assets/leo-photo.jpg" alt="LEO LU 卢剑辉">
+            <div>
+              <h1>LEO LU</h1>
+              <div class="cn-name">卢剑辉</div>
+              <div class="role">物流部部长<br>Logistics Department Manager</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="company">
+            深圳律动未来循环材料有限公司<br>
+            Shenzhen Ecorecycling Technology Co., Ltd.
+          </p>
+          <p class="tagline">
+            电池循环材料、镍钴锂资源闭环与极片粉供应链协同。<br>
+            Battery recycling materials, Ni-Co-Li closed-loop resources, and electrode powder supply chain coordination.
+          </p>
+        </div>
+      </section>
+
+      <nav class="actions" aria-label="Contact actions">
+        <a class="button primary" href="leo-lu.vcf" download>保存到通讯录 / Save Contact</a>
+        <a class="button orange" href="tel:+8613829757750">拨打电话 / Call</a>
+        <a class="button" href="https://wa.me/8613829757750">WhatsApp</a>
+        <a class="button" href="mailto:lujh@shjayson.com">发送邮件 / Email</a>
+        <a class="button" href="assets/profile.pdf">公司介绍 / Profile PDF</a>
+        <a class="button" href="https://www.shjayson.com/">公司官网 / Website</a>
+        <a class="button" href="https://uri.amap.com/search?keyword=%E6%B7%B1%E5%9C%B3%E7%A6%8F%E7%94%B0%E5%8C%BA%E5%96%9C%E5%B9%B4%E4%B8%AD%E5%BF%83A%E5%BA%A7712%E5%AE%A4">地址导航 / Navigation</a>
+        <a class="button" href="#wechat">微信 / WeChat</a>
+      </nav>
+
+      <section class="showcase" aria-label="Company laboratory">
+        <img src="assets/company-lab.png" alt="Company laboratory and recycling materials research">
+        <div class="showcase-copy">
+          <strong>关于我们 / About Us</strong>
+          深圳律动未来循环材料有限公司专注电池循环材料、镍钴锂资源闭环与极片粉供应链协同。<br>
+          Focused on battery recycling materials, Ni-Co-Li closed-loop resources, and electrode powder supply chain coordination.
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>联系方式 / Contact</h2>
+        <div class="grid">
+          <div class="info">
+            <div class="label">Mobile</div>
+            <div class="value">18825044791<br>13802975750</div>
+          </div>
+          <div class="info">
+            <div class="label">Email</div>
+            <div class="value">lujh@shjayson.com</div>
+          </div>
+          <div class="info">
+            <div class="label">Website</div>
+            <div class="value">www.shjayson.com</div>
+          </div>
+          <div class="info">
+            <div class="label">Address</div>
+            <div class="value">深圳福田区喜年中心A座712室</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="wechat" class="section">
+        <h2>微信 / WeChat</h2>
+        <div class="wechat">
+          <img src="assets/wechat-qr.png" alt="WeChat QR Code">
+          <div class="info">
+            <div class="label">WeChat ID</div>
+            <div class="value">13802975750</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>业务关键词 / Keywords</h2>
+        <div class="keywords">
+          <span class="keyword">电池 / Battery</span>
+          <span class="keyword">循环 / Recycling</span>
+          <span class="keyword">闭环 / Closed Loop</span>
+          <span class="keyword">镍钴锂 / Ni-Co-Li</span>
+          <span class="keyword">极片粉 / Electrode Powder</span>
+        </div>
+      </section>
+
+      <section class="section foot">
+        <div>Virtual business card: https://www.shjayson.com/leo</div>
+      </section>
+    </article>
+  </main>
+</body>
+</html>
