@@ -134,6 +134,7 @@
       background: var(--white);
       font-weight: 700;
       text-decoration: none;
+      cursor: pointer;
     }
 
     .button.primary {
@@ -254,6 +255,14 @@
       text-align: center;
     }
 
+    .copy-status {
+      min-height: 20px;
+      margin-top: 10px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
     @media (min-width: 720px) {
       main {
         padding-top: 44px;
@@ -324,6 +333,8 @@
         <a class="button" href="https://www.shjayson.com/">公司官网 / Website</a>
         <a class="button" href="https://uri.amap.com/search?keyword=%E6%B7%B1%E5%9C%B3%E7%A6%8F%E7%94%B0%E5%8C%BA%E5%96%9C%E5%B9%B4%E4%B8%AD%E5%BF%83A%E5%BA%A7712%E5%AE%A4">地址导航 / Navigation</a>
         <a class="button" href="#wechat">微信 / WeChat</a>
+        <button class="button" type="button" data-copy="13802975750" data-label="微信号">复制微信号 / Copy WeChat</button>
+        <button class="button" type="button" data-copy="+8613802975750" data-label="电话">复制电话 / Copy Phone</button>
       </nav>
 
       <section class="showcase" aria-label="Company laboratory">
@@ -364,6 +375,7 @@
           <div class="info">
             <div class="label">WeChat ID</div>
             <div class="value">13802975750</div>
+            <div class="copy-status" id="copy-status" aria-live="polite"></div>
           </div>
         </div>
       </section>
@@ -384,5 +396,23 @@
       </section>
     </article>
   </main>
+  <script>
+    const statusEl = document.getElementById("copy-status");
+
+    async function copyText(value, label) {
+      try {
+        await navigator.clipboard.writeText(value);
+        statusEl.textContent = `${label}已复制 / ${label} copied`;
+      } catch (error) {
+        statusEl.textContent = `请手动复制 / Please copy manually: ${value}`;
+      }
+    }
+
+    document.querySelectorAll("[data-copy]").forEach((button) => {
+      button.addEventListener("click", () => {
+        copyText(button.dataset.copy, button.dataset.label);
+      });
+    });
+  </script>
 </body>
 </html>
